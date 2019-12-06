@@ -1,2 +1,2 @@
-# Pinamax - Website
+# Revealin - Website
 (WIP)
