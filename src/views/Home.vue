@@ -48,6 +48,7 @@ export default {
     displayLogo:function(){
       this.data.description="Hello"
     }
+    this.$vuetify.theme.ligth = true;
   }
 }
 </script>
