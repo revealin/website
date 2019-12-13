@@ -9,20 +9,22 @@
       </v-list-item-content>
     </v-list-item>
 
-    <v-list-item-content id="projectDescription" class="px-3 text-justify" @hover="displayLogo">
-        {{description}}
-    </v-list-item-content>
+    <v-list-item class="px-3 text-justify">
+        <v-list-item-content id="projectDescription">{{ description }}</v-list-item-content>
+    </v-list-item>
 
-    <v-card-actions>
+    <v-card-actions class="d-flex mb-6">
       <v-btn
         text
-        color="deep-red accent-4"
+        class="pa-2"
+        id="btnInscription"
       >
         INSCRIPTION
       </v-btn>
       <v-btn
         text
-        color="deep-green accent-4"
+        class="pa-2"
+        id="btnTelecharger"
       >
         Télécharger
       </v-btn>
@@ -42,13 +44,25 @@ export default {
     //
   },
   data:() => ({
-      description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan dictum augue, eget dictum justo pharetra sit amet. Cras nec neque sit amet lacus auctor commodo. Quisque eleifend ultricies justo ac rutrum. Sed sodales pharetra nibh vitae sollicitudin. Donec nec auctor diam. Curabitur euismod sem ut gravida tempor. Vestibulum ac nibh vel purus mattis pharetra at eu tellus. Nunc id porttitor justo. Sed eleifend dolor sed viverra dictum. Vestibulum hendrerit vel nisl id ullamcorper. Vestibulum mauris justo, aliquet nec augue eu, eleifend imperdiet nunc.'
-      }),
+      description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend elit et interdum fringilla. Nam ante quam, eleifend id nibh at, suscipit efficitur risus. Vestibulum ultricies massa sit amet dui ultricies pharetra. Nunc vehicula euismod lorem at vestibulum. Nulla facilisis neque vitae nibh semper, at semper ex aliquet. Cras auctor leo purus, in pharetra purus interdum a. Proin mollis laoreet sem, non condimentum odio porta ac. Duis tincidunt nec nunc id pellentesque.',
+    }),
     methods:{
-    displayLogo:function(){
-      this.data.description="Hello"
     }
     this.$vuetify.theme.ligth = true;
   }
-}
 </script>
+<style scoped>
+  #projectDescription:hover
+  {
+      background-image:url("https://www.jqueryscript.net/images/Simplest-Lorem-Ipsum-Generator-With-jQuery-Ipsum-js.jpg");
+      opacity:0.3;
+  }
+  #btnInscription
+  {
+      background-color:#bf78b2;
+  }
+  #btnTelecharger
+  {
+      background-color:#abe28e;
+  }
+</style>
