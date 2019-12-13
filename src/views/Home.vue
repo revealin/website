@@ -48,6 +48,7 @@ export default {
     }),
     methods:{
     }
+    this.$vuetify.theme.ligth = true;
   }
 </script>
 <style scoped>
