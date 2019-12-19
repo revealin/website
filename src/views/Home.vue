@@ -1,68 +1,71 @@
 <template>
-  <v-card
-    max-width="344"
-    class="mx-auto"
+  <div class="home">
+    <blocPresentation/>
+  
+   <v-footer
+    padless
   >
-    <v-list-item>
-      <v-list-item-content>
-        <v-list-item-title class="headline text-center">REVEALIN</v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
+    <v-card
+      flat
+      tile
+      class="footer lighten-1 white--text text-center"
+    >
+      <v-card-text>
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-4 white--text"
+          icon
+        >
+          <v-icon size="24px">{{ icon }}</v-icon>
+        </v-btn>
+      </v-card-text>
 
-    <v-list-item class="px-3 text-justify">
-        <v-list-item-content id="projectDescription">{{ description }}</v-list-item-content>
-    </v-list-item>
+      <v-card-text class="white--text pt-0">
+        Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      </v-card-text>
 
-    <v-card-actions class="d-flex mb-6">
-      <v-btn
-        text
-        class="pa-2"
-        id="btnInscription"
-      >
-        INSCRIPTION
-      </v-btn>
-      <v-btn
-        text
-        class="pa-2"
-        id="btnTelecharger"
-      >
-        Télécharger
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+      <v-divider></v-divider>
+
+      <v-card-text class="white--text">
+        2019-{{ new Date().getFullYear() }} | <strong>Revealin</strong>
+      </v-card-text>
+    </v-card>
+  </v-footer></div>
 </template>
 
 <script>
 // @ is an alias to /src
 
+import blocPresentation from '@/components/blocPresentation';
+
 export default {
-  name: "home",
+  name: 'home',
   components: {
-    //
+    blocPresentation
   },
-  created() {
-    //
-  },
-  data:() => ({
-      description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend elit et interdum fringilla. Nam ante quam, eleifend id nibh at, suscipit efficitur risus. Vestibulum ultricies massa sit amet dui ultricies pharetra. Nunc vehicula euismod lorem at vestibulum. Nulla facilisis neque vitae nibh semper, at semper ex aliquet. Cras auctor leo purus, in pharetra purus interdum a. Proin mollis laoreet sem, non condimentum odio porta ac. Duis tincidunt nec nunc id pellentesque.',
+   data: () => ({
+      icons: [
+        'fab fa-facebook',
+        'fab fa-twitter',
+        'fab fa-google-plus',
+        'fab fa-linkedin',
+        'fab fa-instagram',
+      ],
     }),
-    methods:{
-    }
-    this.$vuetify.theme.ligth = true;
-  }
+}
+
 </script>
+
 <style scoped>
-  #projectDescription:hover
+  .theme--light.v-sheet
   {
-      background-image:url("https://www.jqueryscript.net/images/Simplest-Lorem-Ipsum-Generator-With-jQuery-Ipsum-js.jpg");
-      opacity:0.3;
+    background-color:inherit;
   }
-  #btnInscription
+  .footer
   {
-      background-color:#bf78b2;
+    background-color:#abe28e !important;
+    margin-top:20px;
   }
-  #btnTelecharger
-  {
-      background-color:#abe28e;
-  }
+
 </style>
