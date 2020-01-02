@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--<navbarAdmin/>-->
+    <navbarAdmin/>
     <statistiques/>
   </div>
 </template>
@@ -8,11 +8,12 @@
 <script>
 // @ is an alias to /src
 import statistiques from '@/components/statistiques'
-
+import navbarAdmin from "../components/navbarAdmin";
 export default {
   name: 'admin',
   components: {
-    statistiques
+    statistiques,
+    navbarAdmin
   },
   props:{
     value:String
