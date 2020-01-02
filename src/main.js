@@ -10,5 +10,8 @@ new Vue({
   router,
   store,
   vuetify,
+  el:'#app',
+  component:{ App }, 
+  template: '<App/>',
   render: h => h(App)
 }).$mount('#app')
