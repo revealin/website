@@ -1,19 +1,22 @@
 <template>
   <div>
-    <navbarAdmin/>
-    <statistiques/>
+    <!--<navbarAdmin/>
+    <statistiques/>-->
+  <UserAdmin/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import statistiques from '@/components/statistiques'
-import navbarAdmin from "../components/navbarAdmin";
+// import statistiques from '@/components/statistiques'
+// import navbarAdmin from "../components/navbarAdmin";
+import UserAdmin from "../components/UserAdmin";
 export default {
   name: 'admin',
   components: {
-    statistiques,
-    navbarAdmin
+    // statistiques,
+    // navbarAdmin
+      UserAdmin,
   },
   props:{
     value:String
