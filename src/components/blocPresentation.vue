@@ -35,17 +35,18 @@
                 v-model="email"
                 :rules="emailRules"
                 required
-            ></v-text-field>
+            />
             <v-text-field
                 label="Password"
                 v-model="password"
                 type="password"
                 :rules="passwordRules"
                 required
-            ></v-text-field>
+            />
             <v-btn
                 color="primary"
                 :disabled="!isValid"
+                @click.prevent="login"
             >Login</v-btn>
           </v-form>
         </v-card-text>
@@ -63,8 +64,8 @@
         data:() => ({
             description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend elit et interdum fringilla. Nam ante quam, eleifend id nibh at, suscipit efficitur risus. Vestibulum ultricies massa sit amet dui ultricies pharetra. Nunc vehicula euismod lorem at vestibulum. Nulla facilisis neque vitae nibh semper, at semper ex aliquet. Cras auctor leo purus, in pharetra purus interdum a. Proin mollis laoreet sem, non condimentum odio porta ac. Duis tincidunt nec nunc id pellentesque.',
             show: false,
-            email: null,
-            password: null,
+            email: '',
+            password: '',
             isValid: false,
             emailRules: [
                 v => !!v || 'Email is required',
@@ -76,6 +77,16 @@
             ],
         }),
         methods:{
+            login: function() {
+                let data = {
+                    email: this.email,
+                    password: this.password,
+                }
+                this.$store
+                    .dispatch("login", data)
+                    .then(() => this.$router.push("/admin"))
+                    .catch(err => console.log(err));
+            },
         }
     }
 </script>
