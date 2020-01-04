@@ -43,8 +43,8 @@ export default new Vuex.Store({
     },
     login({ commit }, user) {
       return new Promise((resolve, reject) => {
-        commit('AUTH_REQUEST')
-        Axios({ url: 'http://localhost:3000/login', data: user, method: 'POST' })
+        commit('AUTH_REQUEST');
+        Axios({ url: 'http://downstacks.com:8080/auth/signin', data: user, method: 'POST' })
             .then(resp => {
               const token = resp.data.token
               const user = resp.data.user

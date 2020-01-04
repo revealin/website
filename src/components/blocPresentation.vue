@@ -73,20 +73,20 @@
             ],
             passwordRules: [
                 v => !!v || 'Password is required',
-                v => (v && v.length >= 8) || 'Password must have 8+ characters',
+                v => (v && v.length >= 2) || 'Password must have 8+ characters',
             ],
         }),
         methods:{
             login: function() {
-                let data = {
-                    email: this.email,
-                    password: this.password,
-                }
+               let data = {
+                   'email': this.email,
+                   'password': this.password,
+               }
                 this.$store
                     .dispatch("login", data)
                     .then(() => this.$router.push("/admin"))
                     .catch(err => console.log(err));
-            },
+            }
         }
     }
 </script>
