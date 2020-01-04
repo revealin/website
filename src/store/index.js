@@ -9,12 +9,27 @@ export default new Vuex.Store({
   state: {
     users: [],
     status: '',
-    token: localStorage.getItem('token') || '',
+    token: '',
     user: {}
   },
   mutations: {
     SET_USERS: (state, users) => {
       state.users = users
+    },
+    AUTH_REQUEST(state) {
+      state.status = 'loading'
+    },
+    AUTH_SUCCES(state, token, user) {
+      state.status = 'success'
+      state.token = token
+      state.user = user
+    },
+    AUTH_ERROR(state) {
+      state.status = 'error'
+    },
+    LOGOUT(state) {
+      state.status = ''
+      state.token = ''
     },
   },
   actions: {
@@ -28,7 +43,7 @@ export default new Vuex.Store({
     },
     login({ commit }, user) {
       return new Promise((resolve, reject) => {
-        commit('auth_request')
+        commit('AUTH_REQUEST')
         Axios({ url: 'http://localhost:3000/login', data: user, method: 'POST' })
             .then(resp => {
               const token = resp.data.token
@@ -36,11 +51,11 @@ export default new Vuex.Store({
               localStorage.setItem('token', token)
               // Add the following line:
               Axios.defaults.headers.common['Authorization'] = token
-              commit('auth_success', token, user)
+              commit('AUTH_SUCCES', token, user)
               resolve(resp)
             })
             .catch(err => {
-              commit('auth_error')
+              commit('AUTH_ERROR')
               localStorage.removeItem('token')
               reject(err)
             })
@@ -48,11 +63,15 @@ export default new Vuex.Store({
     },
     logout({ commit }) {
       return new Promise((resolve) => {
-        commit('logout')
+        commit('LOGOUT')
         localStorage.removeItem('token')
         delete Axios.defaults.headers.common['Authorization']
         resolve()
       })
     }
+  },
+  getters: {
+    isLoggedIn: state => !!state.token,
+    authStatus: state => state.status,
   },
 });

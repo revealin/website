@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import AdminHome from '../views/AdminHome.vue'
+import store from '@/store/index.js'
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,7 +14,10 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: AdminHome
+    component: AdminHome,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/about',
@@ -23,12 +27,21 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AdminHome.vue')
   }
-]
-
+];
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
-
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/')
+  } else {
+    next()
+  }
+})
 export default router
