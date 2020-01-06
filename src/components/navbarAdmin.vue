@@ -1,14 +1,9 @@
 <template>
-  <v-card>
-    <v-navigation-drawer
-      permanent
-    >
+  <v-card class="navBar">
+    <v-navigation-drawer permanent>
       <template v-slot:prepend>
         <v-list>
-         <v-list-item
-            link
-            two-line
-          >
+         <v-list-item link two-line>
             <v-list-item-content>
               <v-list-item-title class="title">REVEALIN</v-list-item-title>
             </v-list-item-content>
@@ -17,10 +12,7 @@
       </template>
 
 
-      <v-list
-        nav
-        dense
-      >
+      <v-list nav dense>
         <v-list-item v-on:click="utilisateur();" link>
           <v-list-item-icon>
             <v-icon>mdi-account</v-icon>
@@ -66,3 +58,19 @@ export default {
 }
 
 </script>
+<style scoped>
+  .theme--light.v-navigation-drawer
+  {
+    background-color: #2A3F4C !important;
+  }
+
+  #navBar
+  {
+    border-radius:0 !important;
+  }
+
+  .title
+  {
+    color:white !important;
+  }
+</style>
