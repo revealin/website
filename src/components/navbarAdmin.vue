@@ -1,55 +1,30 @@
 <template>
-  <v-card>
+  <div>
     <v-navigation-drawer
-      permanent
+        app
+        clipped
     >
-      <template v-slot:prepend>
-        <v-list>
-         <v-list-item
-            link
-            two-line
-          >
-            <v-list-item-content>
-              <v-list-item-title class="title">REVEALIN</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </template>
-
-
-      <v-list
-        nav
-        dense
-      >
-        <v-list-item v-on:click="utilisateur();" link>
-          <v-list-item-icon>
-            <v-icon>mdi-account</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title on:click>Utilisateurs</v-list-item-title>
-        </v-list-item>
-        <v-list-item v-on:click="signalement();" link>
-          <v-list-item-icon>
-            <v-icon>mdi-alert-circle</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Signalements</v-list-item-title>
-        </v-list-item>
-        <v-list-item v-on:click="bannissement();" link>
-          <v-list-item-icon>
-            <v-icon>mdi-cancel</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Bannissements</v-list-item-title>
-        </v-list-item>
-        <v-list-item v-on:click="statistique();" link>
-          <v-list-item-icon>
-            <v-icon>mdi-chart-bar</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Statistiques du site</v-list-item-title>
+      <v-list>
+        <v-list-item
+            v-for="i in 3"
+            :key="i"
+            :to="{path: '/users' + i}"
+        >
+          <v-list-item-content>
+            <v-list-item-title>Listes d'utilisateur</v-list-item-title>
+          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-  </v-card>
-</template>
 
+    <v-app-bar
+        app
+        clipped-left
+    >
+      <v-toolbar-title>App Bar</v-toolbar-title>
+    </v-app-bar>
+  </div>
+</template>
 <script>
 // @ is an alias to /src
 
@@ -61,7 +36,7 @@ export default {
    data: () => ({
       //
     }),
-    methods:{                 
+    methods:{
     }
 }
 

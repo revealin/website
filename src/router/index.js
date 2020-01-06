@@ -4,7 +4,6 @@ import Home from '../views/Home.vue'
 import AdminHome from '../views/AdminHome.vue'
 import store from '@/store/index.js'
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/',
@@ -18,7 +17,7 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  },
+  }
 ];
 const router = new VueRouter({
   mode: 'history',
