@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <NavBarAdmin v-if="isLoggedIn"/>
-    <v-content>
+    <v-content fluid >
       <router-view></router-view>
     </v-content>
   </v-app>

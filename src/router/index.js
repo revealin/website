@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import AdminHome from '../views/AdminHome.vue'
+// import AdminHome from '../views/UserAdmin.vue'
+import UserAdmin from "../components/UserAdmin";
 import store from '@/store/index.js'
 Vue.use(VueRouter)
 const routes = [
@@ -11,9 +12,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/admin',
+    path: '/admin/users',
     name: 'admin',
-    component: AdminHome,
+    component: UserAdmin,
     meta: {
       requiresAuth: true
     }

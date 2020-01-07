@@ -84,7 +84,7 @@
                }
                 this.$store
                     .dispatch("login", data)
-                    .then(() => this.$router.push("/admin"))
+                    .then(() => this.$router.push("/admin/users"))
                     .catch(err => console.log(err));
             }
         }

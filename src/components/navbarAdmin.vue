@@ -21,7 +21,7 @@
         app
         clipped-left
     >
-      <v-toolbar-title>App Bar</v-toolbar-title>
+      <v-toolbar-title>Admin home</v-toolbar-title>
     </v-app-bar>
   </div>
 </template>

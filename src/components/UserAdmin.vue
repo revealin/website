@@ -1,22 +1,22 @@
 <template>
-   <div>
-       <h2>Liste d'utilisateurs</h2>
-    <v-data-table
-            :headers="headers"
-            :items="users"
-            sort-by="calories"
-            class="elevation-1"
-    >
+  <v-flex xs12="xs12">
+    <v-card>
+      <v-card-title>Users List
+        <v-spacer/>
+        <v-text-field v-model="newSearch" label="Search"/>
+      </v-card-title>
+      <v-data-table :headers="headers"  :items="users" :search="newSearch">
         <template v-slot:item.action="{ item }">
-            <v-icon
-                small
-                @click="deleteItem(item)"
-            >
-                delete
-            </v-icon>
+          <v-icon
+              small
+              @click="deleteItem(item)"
+          >
+            delete
+          </v-icon>
         </template>
-    </v-data-table>
-   </div>
+      </v-data-table>
+    </v-card>
+  </v-flex>
 </template>
 <script>
     import { mapState } from 'vuex';
@@ -56,6 +56,7 @@
                 birth: '',
                 description: '',
             },
+            newSearch:'',
         }),
         mounted() {
             this.$store.dispatch('loadUsers');
@@ -64,6 +65,9 @@
             'users',
         ]),
         methods: {
+            deleteItem:function (item) {
+              console.log(item);
+            }
         },
     }
 </script>
