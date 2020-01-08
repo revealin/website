@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-card max-width="344" class="mx-auto">
     <v-list-item>
       <v-list-item-content>
@@ -53,7 +54,20 @@
       </div>
     </v-expand-transition>
   </v-card>
-
+  <v-card height="50" class="mt-5">
+    <v-footer
+      absolute
+      class="font-weight-medium"
+    >
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        {{ new Date().getFullYear() }} — <strong>Revealin</strong>
+      </v-col>
+    </v-footer>
+  </v-card>
+  </div>
 </template>
 <script>
     export default {
@@ -62,7 +76,7 @@
             this.$vuetify.theme.ligth = true;
         },
         data:() => ({
-            description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend elit et interdum fringilla. Nam ante quam, eleifend id nibh at, suscipit efficitur risus. Vestibulum ultricies massa sit amet dui ultricies pharetra. Nunc vehicula euismod lorem at vestibulum. Nulla facilisis neque vitae nibh semper, at semper ex aliquet. Cras auctor leo purus, in pharetra purus interdum a. Proin mollis laoreet sem, non condimentum odio porta ac. Duis tincidunt nec nunc id pellentesque.',
+            description:'Le projet Revealin vous permet de découvrir une nouvelle façon de découvrir l’autre. Une rencontre avec une personnalité plus qu’un visage ou qu’un corps. Revealin est une application de rencontre où vont défiler des descriptions chacune accompagnée d’un prénom. Une fois vos deux profils connectés, vous pouvez entamer la discussion toujours dans le mystère absolu de l’apparence de votre interlocuteur. A tout moment, lui ou vous peut proposer de dévoiler une photo enregistrée sur votre compte. Découvrez une nouvelle manière de rencontrer de nouvelles personnes. Téléchargez l\'application sur le PlayStore.',
             show: false,
             email: '',
             password: '',
@@ -84,18 +98,18 @@
                }
                 this.$store
                     .dispatch("login", data)
-                    .then(() => this.$router.push("/admin/users"))
+                    .then(() => this.$router.push("/admin/Statistiques"))
                     .catch(err => console.log(err));
             }
         }
     }
 </script>
 <style scoped>
-  #projectDescription:hover
+  /*#projectDescription:hover
   {
     background-image:url("https://www.jqueryscript.net/images/Simplest-Lorem-Ipsum-Generator-With-jQuery-Ipsum-js.jpg");
     opacity:0.3;
-  }
+  }*/
   #btnInscription
   {
     background-color:#abe28e;

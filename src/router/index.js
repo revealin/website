@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 // import AdminHome from '../views/UserAdmin.vue'
 import UserAdmin from "../components/UserAdmin";
+import Statistiques from "../components/StatsAdmin";
 import store from '@/store/index.js'
 Vue.use(VueRouter)
 const routes = [
@@ -13,8 +14,16 @@ const routes = [
   },
   {
     path: '/admin/users',
-    name: 'admin',
+    name: 'adminUser',
     component: UserAdmin,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/admin/statistiques',
+    name: 'Statistiques',
+    component: Statistiques,
     meta: {
       requiresAuth: true
     }
