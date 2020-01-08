@@ -1,17 +1,10 @@
 <template>
   <div>
-    <v-navigation-drawer
-        app
-        clipped
-    >
+    <v-navigation-drawer class="navBar" app clipped>
       <v-list>
-        <v-list-item
-            v-for="i in 3"
-            :key="i"
-            :to="{path: '/users' + i}"
-        >
+        <v-list-item v-for="i in navBar" :key="i" :to="{path: '/admin' + i}">
           <v-list-item-content>
-            <v-list-item-title>Listes d'utilisateur</v-list-item-title>
+            <v-list-item-title class="navBarItem">{{ i }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -27,6 +20,7 @@
 </template>
 <script>
 // @ is an alias to /src
+import {mapState} from 'vuex'
 
 export default {
   name: 'navbarAdmin',
@@ -37,7 +31,23 @@ export default {
       //
     }),
     methods:{
-    }
+    }, 
+    computed:mapState([
+      'navBar'
+    ])
 }
 
 </script>
+
+<style scoped>
+  .navBar
+  {
+    background: #2c3a52 !important;
+    
+  }
+  .navBarItem
+  {
+    color:White !important;
+    margin-bottom:15px;
+  }
+</style>
