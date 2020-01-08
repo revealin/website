@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import AdminHome from '../views/AdminHome.vue'
+// import AdminHome from '../views/UserAdmin.vue'
+import UserAdmin from "../components/UserAdmin";
+import store from '@/store/index.js'
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/',
@@ -11,24 +12,28 @@ const routes = [
     component: Home
   },
   {
-    path: '/admin',
+    path: '/admin/users',
     name: 'admin',
-    component: AdminHome
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AdminHome.vue')
+    component: UserAdmin,
+    meta: {
+      requiresAuth: true
+    }
   }
-]
-
+];
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
-
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/')
+  } else {
+    next()
+  }
+})
 export default router
