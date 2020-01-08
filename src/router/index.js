@@ -2,9 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import ReportAdmin from '../components/ReportAdmin.vue'
-import UserAdmin from "../components/UserAdmin";
-import Statistiques from "../components/StatsAdmin";
+import UserAdmin from "../components/UserAdmin"
+import Statistiques from "../components/StatsAdmin"
 import BannedUsers from "../components/BannedUser"
+import NotFound from  "../components/NotFound"
 import store from '@/store/index.js'
 Vue.use(VueRouter)
 const routes = [
@@ -44,7 +45,13 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  }
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: NotFound,
+  },
+
 ];
 const router = new VueRouter({
   mode: 'history',
@@ -61,5 +68,13 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-})
+});
+router.beforeEach((to, from, next) => {
+  if (!to.matched.length) {
+    next('/404');
+  } else {
+    next();
+  }
+});
+
 export default router
