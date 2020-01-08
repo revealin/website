@@ -16,7 +16,7 @@
 
   components: {
       NavBarAdmin
-  },
+    },
   computed: mapGetters([
     'isLoggedIn',
    ]),

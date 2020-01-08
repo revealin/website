@@ -10,7 +10,8 @@ export default new Vuex.Store({
     users: [],
     status: '',
     token: '',
-    user: {}
+    user: {}, 
+    navBar:['Statistiques','Users','Reports','Bannissements']
   },
   mutations: {
     SET_USERS: (state, users) => {
