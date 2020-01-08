@@ -43,43 +43,14 @@
     <!-- FIN NON -->
     </v-layout>
     <v-layout class="ml-5" row>
-      <!-- RESEAUX SOCIAUX -->
-     <v-card class="ml-3 mt-3" max-width="200" outlined>
-      <v-list-item class="blocNumberData">
-        <p class="numberData mx-auto">:data</p>
-      </v-list-item>
-      <v-list-item class="blocNameData">
-          <p class="nameData mx-auto">FACEBOOK</p>
-      </v-list-item>
-    </v-card>
-    <v-card class="ml-3 mt-3" max-width="200" outlined>
-      <v-list-item class="blocNumberData">
-        <p class="numberData mx-auto">:data</p>
-      </v-list-item>
-      <v-list-item class="blocNameData">
-          <p class="nameData mx-auto">TWITTER</p>
-      </v-list-item>
-    </v-card>
-    <!-- -->
-    <v-card class="ml-3 mt-3" max-width="200" outlined>
-      <v-list-item class="blocNumberData">
-        <p class="numberData mx-auto">:data</p>
-      </v-list-item>
-      <v-list-item class="blocNameData">
-          <p class="nameData mx-auto">INSTAGRAM</p>
-      </v-list-item>
-    </v-card>
-    </v-layout>
-    <v-layout class="ml-5" row>
     <!-- GRAPH -->
       <v-card class="text-center mt-3 ml-3" color="#362F55" dark max-width="600" max-height="250">
       <v-card-text>
         <v-sheet color="#362F55">
           <v-sparkline :value="value" color="#B9CEF3" height="100" padding="24" stroke-linecap="round"
-            smooth
-          >
+            smooth>
             <template v-slot:label="item">
-              {{ item.value }}
+              {{countUser}}
             </template>
           </v-sparkline>
         </v-sheet>
@@ -94,7 +65,7 @@
       <!-- MESSAGES ENVOYES -->
     <v-card class="ml-3 mt-3 bloc" width="400" max-height="250" outlined>
       <v-list-item class="blocNumberData">
-        <p class="numberData mx-auto">:data</p>
+        <p class="numberData mx-auto">{{countMessages}}</p>
       </v-list-item>
 
       <v-list-item class="blocNameData">
@@ -126,21 +97,19 @@ export default {
   },
    data: () => ({
      value: [
-        356,
-        564,
-        789,
-        689,
-        900
+        4,1
       ],
 
       //
     }),
     created() {
         this.$store.dispatch('loadUsers');
+        this.$store.dispatch('loadMessages');
     },
     computed: {
         ...mapGetters([
-           'countUser'
+           'countUser', 
+           'countMessages'
         ]),
     }
 }

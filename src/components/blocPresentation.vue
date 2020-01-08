@@ -76,7 +76,7 @@
             this.$vuetify.theme.ligth = true;
         },
         data:() => ({
-            description:'Le projet Revealin vous permet de découvrir une nouvelle façon de découvrir l’autre. Une rencontre avec une personnalité plus qu’un visage ou qu’un corps. Revealin est une application de rencontre où vont défiler des descriptions chacune accompagnée d’un prénom. Une fois vos deux profils connectés, vous pouvez entamer la discussion toujours dans le mystère absolu de l’apparence de votre interlocuteur. A tout moment, lui ou vous peut proposer de dévoiler une photo enregistrée sur votre compte. Découvrez une nouvelle manière de rencontrer de nouvelles personnes. Téléchargez l\'application sur le PlayStore.',
+            description:'Le projet Revealin vous propose une nouvelle façon de découvrir l’autre. Une rencontre avec une personnalité plus qu’un visage ou qu’un corps. Revealin est une application de rencontre où vont défiler des descriptions chacune accompagnée d’un prénom. Une fois vos deux profils connectés, vous pouvez entamer la discussion toujours dans le mystère absolu de l’apparence de votre interlocuteur. A tout moment, lui ou vous peut proposer de dévoiler une photo enregistrée sur votre compte. Découvrez une nouvelle manière de rencontrer de nouvelles personnes. Téléchargez l\'application sur le PlayStore.',
             show: false,
             email: '',
             password: '',
@@ -115,5 +115,10 @@
     background-color:#abe28e;
     padding:10px ;
     margin:10px ;
+  }
+  .v-content
+  {
+    background-image: url('https://zupimages.net/viewer.php?id=20/02/tg70.jpg') !important;
+    background-repeat: repeat-x !important;
   }
 </style>
