@@ -4,7 +4,7 @@
     <!-- UTILISATEURS -->
       <v-card class="ml-3 mt-3" max-width="200" outlined>
         <v-list-item class="blocNumberData">
-          <p class="numberData mx-auto">:data</p>
+          <p class="numberData mx-auto">{{countUser}}</p>
         </v-list-item>
         <v-list-item class="blocNameData">
             <p class="nameData mx-auto">UTILISATEURS</p>
@@ -118,6 +118,7 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
 export default {
   name: 'Statistiques',
   components: {
@@ -125,15 +126,23 @@ export default {
   },
    data: () => ({
      value: [
-        356, 
+        356,
         564,
         789,
         689,
         900
       ],
- 
+
       //
     }),
+    created() {
+        this.$store.dispatch('loadUsers');
+    },
+    computed: {
+        ...mapGetters([
+           'countUser'
+        ]),
+    }
 }
 </script>
 
@@ -148,7 +157,7 @@ export default {
 
     .blocNumberData
     {
-      background-color:#362F55;  
+      background-color:#362F55;
       border:solid 2px #B9CEF3;
       border-bottom:none;
     }
@@ -166,7 +175,7 @@ export default {
       background-color:#362F55;
       border:solid 2px #B9CEF3;
       border-top:none;
-   
+
     }
 
     .nameData
@@ -180,5 +189,5 @@ export default {
       border:solid 2px #B9CEF3;
     }
 
-  
+
 </style>
