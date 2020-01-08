@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import ReportAdmin from '../components/ReportAdmin.vue'
 import UserAdmin from "../components/UserAdmin";
 import Statistiques from "../components/StatsAdmin";
+import BannedUsers from "../components/BannedUser"
 import store from '@/store/index.js'
 Vue.use(VueRouter)
 const routes = [
@@ -32,6 +33,14 @@ const routes = [
     path: '/admin/reports',
     name: 'Reports',
     component: ReportAdmin,
+    meta: {
+      requiresAuth: true
+    },
+  },
+  {
+    path: '/admin/Bannissements',
+    name: 'Banned',
+    component: BannedUsers,
     meta: {
       requiresAuth: true
     }
