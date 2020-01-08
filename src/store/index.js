@@ -10,7 +10,7 @@ export default new Vuex.Store({
     users: [],
     status: '',
     token: '',
-    user: {}, 
+    user: {},
     navBar:['Statistiques','Users','Reports','Bannissements']
   },
   mutations: {
@@ -69,7 +69,19 @@ export default new Vuex.Store({
         delete Axios.defaults.headers.common['Authorization']
         resolve()
       })
-    }
+    },
+    deleteUser({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        Axios({url: `http://downstacks.com:8080/users/${id}`, method: 'DELETE' })
+            .then(resp => {
+              console.log(commit);
+              return resp;
+            })
+            .catch(err => {
+              reject(err)
+            })
+      })
+    },
   },
   getters: {
     isLoggedIn: state => !!state.token,

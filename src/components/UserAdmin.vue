@@ -40,14 +40,6 @@
                 { text: 'description', value: 'description' },
                 { text: 'Actions', value: 'action', sortable: false },
             ],
-            editedItem: {
-                name: '',
-                email: '',
-                gender: '',
-                createdAt: '',
-                birth: '',
-                description: '',
-            },
             defaultItem: {
                 name: '',
                 email: '',
@@ -58,7 +50,10 @@
             },
             newSearch:'',
         }),
-        mounted() {
+        created() {
+            this.$store.dispatch('loadUsers');
+        },
+        updated() {
             this.$store.dispatch('loadUsers');
         },
         computed: mapState([
@@ -66,7 +61,9 @@
         ]),
         methods: {
             deleteItem:function (item) {
-              console.log(item);
+                this.$store.dispatch('deleteUser',item._id)
+                    .then((res) => console.log(res))
+                    .catch(err => console.log(err));
             }
         },
     }
