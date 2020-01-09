@@ -8,6 +8,7 @@ Vue.use(VueAxios, Axios);
 export default new Vuex.Store({
   state: {
     users: [],
+    messages:[],
     status: '',
     token: '',
     user: {},
@@ -32,6 +33,9 @@ export default new Vuex.Store({
       state.status = ''
       state.token = ''
     },
+    SET_MESSAGES: (state, messages) => {
+      state.messages = messages
+    },
   },
   actions: {
     loadUsers({ commit }) {
@@ -40,6 +44,14 @@ export default new Vuex.Store({
           .then(r => r.data)
           .then((users) => {
             commit('SET_USERS', users);
+          });
+    },
+    loadMessages({ commit }) {
+      Axios
+          .get('http://downstacks.com:8080/messages')
+          .then(r => r.data)
+          .then((messages) => {
+            commit('SET_MESSAGES', messages);
           });
     },
     login({ commit }, user) {
@@ -87,5 +99,6 @@ export default new Vuex.Store({
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
     countUser: state => state.users.length,
+    countMessages: state => state.messages.length
   },
 });
