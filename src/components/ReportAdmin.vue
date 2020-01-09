@@ -1,7 +1,8 @@
 <template>
   <v-container fluid>
+    <h3>attention update non en temps reel</h3>
     <v-data-iterator
-        :items="items"
+        :items="reportedUser"
         item-key="name"
         :items-per-page="4"
         :single-expand="expand"
@@ -48,6 +49,7 @@
                 <v-list-item>
                   <v-btn
                       color="primary"
+                      @click="ban(item._id)"
                   >Bannir</v-btn>
                 </v-list-item>
               </v-list>
@@ -66,25 +68,16 @@
         name: "ReportAdmin.vue",
         data: () => ({
             expand: true,
-            items: [
-                {
-                    name: 'Bertrand',
-                    email: "betrand@gmail.com",
-                    description: "ccedcqdncezjfbc",
-                    reports: 24,
-                },
-                {
-                    name: 'Jack',
-                    email: "jack@gmail.com",
-                    description: "denaildfezjfipze",
-                    reports: 34,
-                },
-            ],
         }),
         computed: {
             ...mapGetters([
                 'reportedUser'
             ]),
+        },
+        methods:{
+            ban(id){
+             this.$store.dispatch('ban',id);
+            }
         }
     }
 </script>

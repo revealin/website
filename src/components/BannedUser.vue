@@ -1,7 +1,8 @@
 <template>
   <v-container fluid>
+    <h3>attention update non en temps reel</h3>
     <v-data-iterator
-        :items="reportedUser"
+        :items="bannedUser"
         item-key="name"
         :items-per-page="4"
         :single-expand="expand"
@@ -78,7 +79,7 @@
         }),
         computed: {
             ...mapGetters([
-                'reportedUser'
+                'bannedUser'
             ]),
         },
         methods:{
