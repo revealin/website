@@ -21,7 +21,7 @@
 <style scoped>
   .home{
     padding-top: 25px;
-    
+
   }
   .theme--light.v-sheet
   {
