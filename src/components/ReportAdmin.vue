@@ -57,6 +57,11 @@
                   <v-list-item-content>Iron:</v-list-item-content>
                   <v-list-item-content class="align-end">{{ item.iron }}</v-list-item-content>
                 </v-list-item>
+                <v-list-item>
+                  <v-btn
+                      color="primary"
+                  >Bannir</v-btn>
+                </v-list-item>
               </v-list>
             </v-card>
           </v-col>

@@ -99,6 +99,8 @@ export default new Vuex.Store({
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
     countUser: state => state.users.length,
-    countMessages: state => state.messages.length
+    countMessages: state => state.messages.length,
+    reportedUser: state =>  state.users.filter(users => users.banned)
+
   },
 });
