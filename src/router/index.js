@@ -51,7 +51,6 @@ const routes = [
     name: 'NotFound',
     component: NotFound,
   },
-
 ];
 const router = new VueRouter({
   mode: 'history',

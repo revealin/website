@@ -49,6 +49,16 @@
                   <v-list-item-content>reports:</v-list-item-content>
                   <v-list-item-content class="align-end">{{ item.reports }}</v-list-item-content>
                 </v-list-item>
+                <v-list-item>
+                  <v-list-item-content>reports:</v-list-item-content>
+                  <v-list-item-content class="align-end">{{ item.reports }}</v-list-item-content>
+                </v-list-item>
+                <v-list-item>
+                  <v-btn
+                      color="primary"
+                      @click="unBan(item)"
+                  >UnBan</v-btn>
+                </v-list-item>
               </v-list>
             </v-card>
           </v-col>
@@ -70,6 +80,11 @@
             ...mapGetters([
                 'reportedUser'
             ]),
+        },
+        methods:{
+            unBan(user){
+                this.$store.dispatch("unBan",user._id);
+            }
         }
     }
 </script>

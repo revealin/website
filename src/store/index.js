@@ -94,6 +94,42 @@ export default new Vuex.Store({
             })
       })
     },
+    editUser({ commit }, editedUser){
+      Axios({url: `http://downstacks.com:8080/users/${editedUser.id}`, data:editedUser, method: 'PATCH' })
+          .then(resp => {
+            console.log(commit);
+            return resp;
+          })
+          .catch(err => {
+            return(err)
+          })
+    },
+    Ban({ commit }, id){
+        let data = {
+            'banned':true,
+        }
+    Axios({url: `http://downstacks.com:8080/users/${id}`, data:data, method: 'PATCH' })
+        .then(resp => {
+            console.log(commit);
+            console.log( resp);
+        })
+        .catch(err => {
+            return(err)
+        })
+    },
+      unBan({ commit }, id){
+          let data = {
+              'banned':false,
+          }
+          Axios({url: `http://downstacks.com:8080/users/${id}`, data:data, method: 'PATCH' })
+              .then(resp => {
+                  console.log(commit);
+                  console.log( resp);
+              })
+              .catch(err => {
+                  return(err)
+              })
+      },
   },
   getters: {
     isLoggedIn: state => !!state.token,

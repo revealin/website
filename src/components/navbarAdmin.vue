@@ -30,11 +30,9 @@ export default {
    data: () => ({
       //
     }),
-    methods:{
-    }, 
     computed:mapState([
       'navBar'
-    ])
+    ]),
 }
 
 </script>
@@ -43,7 +41,7 @@ export default {
   .navBar
   {
     background: #2c3a52 !important;
-    
+
   }
   .navBarItem
   {
