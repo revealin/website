@@ -1,7 +1,8 @@
 <template>
   <v-container fluid>
+    <h3>attention update non en temps reel</h3>
     <v-data-iterator
-        :items="reportedUser"
+        :items="bannedUser"
         item-key="name"
         :items-per-page="4"
         :single-expand="expand"
@@ -49,6 +50,16 @@
                   <v-list-item-content>reports:</v-list-item-content>
                   <v-list-item-content class="align-end">{{ item.reports }}</v-list-item-content>
                 </v-list-item>
+                <v-list-item>
+                  <v-list-item-content>reports:</v-list-item-content>
+                  <v-list-item-content class="align-end">{{ item.reports }}</v-list-item-content>
+                </v-list-item>
+                <v-list-item>
+                  <v-btn
+                      color="primary"
+                      @click="unBan(item)"
+                  >UnBan</v-btn>
+                </v-list-item>
               </v-list>
             </v-card>
           </v-col>
@@ -68,8 +79,13 @@
         }),
         computed: {
             ...mapGetters([
-                'reportedUser'
+                'bannedUser'
             ]),
+        },
+        methods:{
+            unBan(user){
+                this.$store.dispatch("unBan",user._id);
+            }
         }
     }
 </script>
