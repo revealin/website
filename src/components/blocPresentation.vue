@@ -77,7 +77,7 @@
         },
         data:() => ({
             description:'Le projet Revealin vous propose une nouvelle façon de découvrir l’autre. Une rencontre avec une personnalité plus qu’un visage ou qu’un corps. Revealin est une application de rencontre où vont défiler des descriptions chacune accompagnée d’un prénom. Une fois vos deux profils connectés, vous pouvez entamer la discussion toujours dans le mystère absolu de l’apparence de votre interlocuteur. A tout moment, lui ou vous peut proposer de dévoiler une photo enregistrée sur votre compte. Découvrez une nouvelle manière de rencontrer de nouvelles personnes. Téléchargez l\'application sur le PlayStore.',
-            show: false,
+            show: true,
             email: '',
             password: '',
             isValid: false,
